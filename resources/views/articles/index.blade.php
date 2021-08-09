@@ -3,21 +3,23 @@
 @section('content')
 <div id="wrapper">
 	<div id="page" class="container">
-		@foreach($articles as $article)
+		@forelse($articles as $article)
             <div class="content">
                 <div class="title">
                     <h2>
                         <a href="{{ $article->path() }}">{{ $article->title}}</a>
                     </h2>
                 </div>
-            </div>
-
-            <p>
+                <p>
                 <img src="/images/banner.jpg" alt="" class="image image-full">
             </p>
 
             {!! $article->excerpt !!}
-        @endforeach
+            </div>
+        @empty
+        <p>No articles!</p>
+           
+        @endforelse
 	</div>
 </div>
 @endsection
